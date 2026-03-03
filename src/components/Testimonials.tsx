@@ -67,11 +67,12 @@ function Stars({ count }: { count: number }) {
 
 export default function Testimonials() {
   const [active, setActive] = useState<number | null>(null);
+  const [mobileActive, setMobileActive] = useState(0);
 
   const activeTestimonial = active !== null ? testimonials[active] : null;
 
   return (
-    <section className="px-8 py-20 overflow-hidden">
+    <section className="overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
         <motion.h2
@@ -79,7 +80,7 @@ export default function Testimonials() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpScale}
-          className="mx-auto max-w-[800px] text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+          className="mx-auto max-w-[800px] text-center font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[56px]"
         >
           1000+ öğrenci Sorsana&apos;ya güveniyor
         </motion.h2>
@@ -88,19 +89,74 @@ export default function Testimonials() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="mx-auto mt-6 max-w-[600px] text-center text-base leading-7 text-text-secondary"
+          className="mx-auto mt-4 max-w-[600px] text-center text-sm leading-7 text-text-secondary sm:text-base md:mt-6"
         >
           Eğitim fırsatları ve işbirlikçi platformlar sunarak büyümeyi
           destekliyor, potansiyeli ortaya çıkarıyoruz.
         </motion.p>
 
-        {/* Testimonial Grid */}
+        {/* Mobile Testimonial Card */}
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={fadeUp}
-          className="relative mt-16 flex items-center justify-center gap-6"
+          className="mt-10 md:hidden"
+        >
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={mobileActive}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+              className="rounded-2xl border border-foreground/10 p-6"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src={testimonials[mobileActive].image}
+                  alt={testimonials[mobileActive].name}
+                  className="h-14 w-14 rounded-full object-cover"
+                />
+                <div>
+                  <p className="font-heading text-base font-bold text-foreground">
+                    {testimonials[mobileActive].name}
+                  </p>
+                  <p className="text-sm text-text-secondary">
+                    {testimonials[mobileActive].role}
+                  </p>
+                </div>
+              </div>
+              <Stars count={testimonials[mobileActive].rating} />
+              <h3 className="mt-4 font-heading text-lg font-bold text-foreground">
+                {testimonials[mobileActive].title}
+              </h3>
+              <p className="mt-3 text-sm leading-6 text-text-secondary">
+                &ldquo;{testimonials[mobileActive].quote}&rdquo;
+              </p>
+            </motion.div>
+          </AnimatePresence>
+          {/* Dots navigation */}
+          <div className="mt-6 flex justify-center gap-2">
+            {testimonials.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setMobileActive(i)}
+                className={`h-2.5 rounded-full transition-all ${
+                  mobileActive === i ? "w-8 bg-violet" : "w-2.5 bg-foreground/20"
+                }`}
+              />
+            ))}
+          </div>
+        </motion.div>
+
+        {/* Desktop Testimonial Grid */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={fadeUp}
+          className="relative mt-16 hidden items-center justify-center gap-6 md:flex"
         >
           {/* Left large image */}
           <div
@@ -190,9 +246,7 @@ export default function Testimonials() {
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  className={`overflow-hidden rounded-3xl ${
-                    i === 0 ? "h-[420px] w-[140px]" : "h-[420px] w-[140px]"
-                  }`}
+                  className="h-[420px] w-[140px] overflow-hidden rounded-3xl"
                 >
                   <img
                     src={t.image}

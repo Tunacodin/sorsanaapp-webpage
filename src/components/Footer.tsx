@@ -28,7 +28,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-foreground/8 bg-white px-8 pt-16 pb-8">
+    <footer className="border-t border-foreground/8 bg-white px-4 pt-10 pb-6 sm:px-6 md:px-8 md:pt-16 md:pb-8">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -37,10 +37,10 @@ export default function Footer() {
         className="mx-auto max-w-[1280px]"
       >
         {/* Top Section */}
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 sm:gap-10 md:grid-cols-[1.2fr_1fr_1fr_1fr] md:gap-12">
           {/* Brand */}
-          <motion.div variants={fadeUp}>
-            <p className="font-heading text-[48px] font-bold leading-[1.1] tracking-[-0.02em]">
+          <motion.div variants={fadeUp} className="sm:col-span-2 md:col-span-1">
+            <p className="font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] sm:text-4xl md:text-[48px]">
               <span className="text-foreground">Sorun varsa </span>
               <span className="text-violet">Sorsana!</span>
             </p>

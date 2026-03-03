@@ -53,9 +53,9 @@ export default function Roadmap() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="sinavlar" className="px-8 py-20 overflow-hidden">
+    <section id="sinavlar" className="overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-10 md:gap-16 md:grid-cols-2">
           {/* Left Side */}
           <motion.div
             initial="hidden"
@@ -65,13 +65,13 @@ export default function Roadmap() {
           >
             <motion.h2
               variants={fadeUpScale}
-              className="font-heading text-[48px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+              className="font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[48px]"
             >
               Başarıya giden yol haritası
             </motion.h2>
             <motion.p
               variants={fadeUp}
-              className="mt-6 max-w-[500px] text-base leading-7 text-text-secondary"
+              className="mt-4 max-w-[500px] text-sm leading-7 text-text-secondary sm:text-base md:mt-6"
             >
               Sorsana ile sınav hazırlığında ilk adımı at. Yapılandırılmış
               öğrenme sürecimiz ile hedeflerine ulaş.
@@ -132,7 +132,7 @@ export default function Roadmap() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={scaleReveal}
-            className="flex items-start justify-end pt-20"
+            className="hidden items-start justify-end md:flex md:pt-20"
           >
             <div className="h-[600px] w-full max-w-[480px] overflow-hidden rounded-3xl">
               <motion.img

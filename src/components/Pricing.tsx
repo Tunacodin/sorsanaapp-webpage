@@ -71,7 +71,7 @@ function CheckIcon() {
 
 export default function Pricing() {
   return (
-    <section className="px-8 py-20 overflow-hidden">
+    <section className="overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
         <motion.h2
@@ -79,7 +79,7 @@ export default function Pricing() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpScale}
-          className="mx-auto max-w-[800px] text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+          className="mx-auto max-w-[800px] text-center font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[56px]"
         >
           Sana Uygun Planı Seç
         </motion.h2>
@@ -88,7 +88,7 @@ export default function Pricing() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="mx-auto mt-6 max-w-[600px] text-center text-base leading-7 text-text-secondary"
+          className="mx-auto mt-4 max-w-[600px] text-center text-sm leading-7 text-text-secondary sm:text-base md:mt-6"
         >
           Öğrenme yolculuğunu hızlandıracak en uygun paketi seç
         </motion.p>
@@ -99,7 +99,7 @@ export default function Pricing() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3"
+          className="mt-10 grid grid-cols-1 gap-4 sm:gap-6 md:mt-16 md:grid-cols-3"
         >
           {plans.map((plan) => (
             <motion.div
@@ -107,7 +107,7 @@ export default function Pricing() {
               variants={fadeUp}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className={`relative flex flex-col overflow-hidden rounded-3xl p-8 ${
+              className={`relative flex flex-col overflow-hidden rounded-2xl p-6 sm:rounded-3xl sm:p-8 ${
                 plan.popular
                   ? "bg-[#0f0f1a]"
                   : "border-2 border-violet-600 bg-white"
@@ -140,7 +140,7 @@ export default function Pricing() {
 
               {/* Price */}
               <div className="relative mt-8">
-                <span className={`font-heading text-[56px] font-bold leading-none ${plan.popular ? "text-white" : "text-foreground"}`}>
+                <span className={`font-heading text-4xl font-bold leading-none sm:text-[56px] ${plan.popular ? "text-white" : "text-foreground"}`}>
                   {plan.price}
                 </span>
                 <span className={`ml-1 text-base ${plan.popular ? "text-white/40" : "text-text-secondary"}`}>/ay</span>

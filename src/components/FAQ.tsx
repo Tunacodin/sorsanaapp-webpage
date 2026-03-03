@@ -36,7 +36,7 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState(0);
 
   return (
-    <section id="sss" className="relative px-8 py-20 overflow-hidden">
+    <section id="sss" className="relative overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       {/* Decorative stars */}
       {[
         "top-16 left-[15%] h-10 w-10 text-violet-light/40",
@@ -72,7 +72,7 @@ export default function FAQ() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpScale}
-          className="text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+          className="text-center font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[56px]"
         >
           Sıkça Sorulan Sorular
         </motion.h2>

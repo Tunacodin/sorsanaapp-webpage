@@ -35,7 +35,7 @@ const lines: [number, number][] = [
 
 export default function Network() {
   return (
-    <section className="px-8 py-20 overflow-hidden">
+    <section className="overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
         <motion.h2
@@ -43,7 +43,7 @@ export default function Network() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpScale}
-          className="mx-auto max-w-[700px] text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+          className="mx-auto max-w-[700px] text-center font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[56px]"
         >
           Türkiye&apos;nin Dört Bir Yanından
           <br />
@@ -96,7 +96,7 @@ export default function Network() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }}
-          className="relative mt-12 aspect-[2/1]"
+          className="relative mt-8 aspect-[2/1] sm:mt-12"
         >
           {/* World Map Image Background */}
           <img

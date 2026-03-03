@@ -29,7 +29,7 @@ const paths = [
 
 export default function Paths() {
   return (
-    <section className="px-8 py-20 overflow-hidden">
+    <section className="overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
         <motion.h2
@@ -37,7 +37,7 @@ export default function Paths() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpScale}
-          className="mx-auto max-w-[800px] text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+          className="mx-auto max-w-[800px] text-center font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[56px]"
         >
           Aradığın her şey burada.
         </motion.h2>
@@ -48,14 +48,14 @@ export default function Paths() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.15 }}
           variants={staggerContainerSlow}
-          className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-3"
+          className="mt-10 grid grid-cols-1 gap-4 sm:gap-6 md:mt-16 md:grid-cols-3"
         >
           {paths.map((path) => (
             <motion.div
               key={path.title}
               variants={rotateIn}
               whileHover={{ y: -10, transition: { duration: 0.3 } }}
-              className="group relative h-[480px] overflow-hidden rounded-3xl"
+              className="group relative h-[360px] overflow-hidden rounded-2xl sm:h-[420px] md:h-[480px] md:rounded-3xl"
             >
               {/* Background Image */}
               <motion.img
@@ -70,8 +70,8 @@ export default function Paths() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
 
               {/* Content at bottom */}
-              <div className="absolute bottom-0 left-0 right-0 p-8">
-                <div className="rounded-2xl bg-white/90 p-6 backdrop-blur-sm">
+              <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8">
+                <div className="rounded-xl bg-white/90 p-4 backdrop-blur-sm sm:rounded-2xl sm:p-6">
                   <h3 className="font-heading text-xl font-bold text-foreground">
                     {path.title}
                   </h3>

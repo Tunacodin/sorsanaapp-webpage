@@ -43,7 +43,7 @@ const sideArticles = [
 
 export default function Resources() {
   return (
-    <section className="px-8 py-20 overflow-hidden">
+    <section className="overflow-hidden px-4 py-16 sm:px-6 md:px-8 md:py-20">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
         <motion.h2
@@ -51,7 +51,7 @@ export default function Resources() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={fadeUpScale}
-          className="mx-auto max-w-[800px] text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
+          className="mx-auto max-w-[800px] text-center font-heading text-3xl font-bold leading-[1.1] tracking-[-0.02em] text-foreground sm:text-4xl md:text-[56px]"
         >
           En Son Etkinlik ve Haberler
         </motion.h2>
@@ -62,7 +62,7 @@ export default function Resources() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
-          className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2"
+          className="mt-10 grid grid-cols-1 gap-6 sm:gap-8 md:mt-16 md:grid-cols-2"
         >
           {/* Featured Article - Left */}
           <motion.a
@@ -70,11 +70,11 @@ export default function Resources() {
             variants={fadeUp}
             className="group rounded-3xl border border-foreground/8 p-5"
           >
-            <div className="overflow-hidden rounded-2xl">
+            <div className="overflow-hidden rounded-xl sm:rounded-2xl">
               <img
                 src={featured.image}
                 alt={featured.title}
-                className="h-[320px] w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="h-[200px] w-full object-cover transition-transform duration-500 group-hover:scale-105 sm:h-[280px] md:h-[320px]"
               />
             </div>
             <div className="mt-5 flex items-center gap-4 text-sm text-text-secondary">
@@ -119,9 +119,9 @@ export default function Resources() {
                 key={article.title}
                 href="#"
                 variants={fadeUp}
-                className="group flex gap-5 rounded-2xl border border-foreground/8 p-4"
+                className="group flex gap-4 rounded-xl border border-foreground/8 p-3 sm:gap-5 sm:rounded-2xl sm:p-4"
               >
-                <div className="h-[130px] w-[180px] shrink-0 overflow-hidden rounded-xl">
+                <div className="h-[100px] w-[120px] shrink-0 overflow-hidden rounded-lg sm:h-[130px] sm:w-[180px] sm:rounded-xl">
                   <img
                     src={article.image}
                     alt={article.title}
