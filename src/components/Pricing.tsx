@@ -107,18 +107,24 @@ export default function Pricing() {
               variants={fadeUp}
               whileHover={{ y: -6 }}
               transition={{ duration: 0.3 }}
-              className="relative flex flex-col overflow-hidden rounded-3xl bg-[#0f0f1a] p-8"
+              className={`relative flex flex-col overflow-hidden rounded-3xl p-8 ${
+                plan.popular
+                  ? "bg-[#0f0f1a]"
+                  : "border-2 border-violet-600 bg-white"
+              }`}
             >
-              {/* Top gradient glow */}
-              <div className="pointer-events-none absolute inset-x-0 top-0 h-[120px]">
-                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
-                <div className="absolute inset-x-0 top-0 h-[120px] bg-gradient-to-b from-violet-500/10 to-transparent" />
-              </div>
+              {/* Top gradient glow (only for dark/popular card) */}
+              {plan.popular && (
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-[120px]">
+                  <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-violet-500/60 to-transparent" />
+                  <div className="absolute inset-x-0 top-0 h-[120px] bg-gradient-to-b from-violet-500/10 to-transparent" />
+                </div>
+              )}
 
               {/* Plan header */}
               <div className="relative">
                 <div className="flex items-center gap-3">
-                  <h3 className="font-heading text-2xl font-bold text-white">
+                  <h3 className={`font-heading text-2xl font-bold ${plan.popular ? "text-white" : "text-foreground"}`}>
                     {plan.name}
                   </h3>
                   {plan.popular && (
@@ -127,17 +133,17 @@ export default function Pricing() {
                     </span>
                   )}
                 </div>
-                <p className="mt-3 text-sm leading-6 text-white/50">
+                <p className={`mt-3 text-sm leading-6 ${plan.popular ? "text-white/50" : "text-text-secondary"}`}>
                   {plan.description}
                 </p>
               </div>
 
               {/* Price */}
               <div className="relative mt-8">
-                <span className="font-heading text-[56px] font-bold leading-none text-white">
+                <span className={`font-heading text-[56px] font-bold leading-none ${plan.popular ? "text-white" : "text-foreground"}`}>
                   {plan.price}
                 </span>
-                <span className="ml-1 text-base text-white/40">/ay</span>
+                <span className={`ml-1 text-base ${plan.popular ? "text-white/40" : "text-text-secondary"}`}>/ay</span>
               </div>
 
               {/* CTA Button */}
@@ -166,7 +172,7 @@ export default function Pricing() {
                 ) : (
                   <a
                     href="#"
-                    className="flex w-full items-center justify-center gap-2 rounded-xl border border-white/20 py-3.5 text-sm font-semibold text-white transition-colors hover:bg-white/10"
+                    className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-violet-600 py-3.5 text-sm font-semibold text-violet-600 transition-colors hover:bg-violet-50"
                   >
                     Hemen Başla
                     <svg
@@ -177,7 +183,7 @@ export default function Pricing() {
                     >
                       <path
                         d="M3 8H13M13 8L9 4M13 8L9 12"
-                        stroke="white"
+                        stroke="currentColor"
                         strokeWidth="1.5"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -192,7 +198,7 @@ export default function Pricing() {
                 {plan.features.map((feature) => (
                   <li
                     key={feature}
-                    className="flex items-start gap-3 text-sm text-white/70"
+                    className={`flex items-start gap-3 text-sm ${plan.popular ? "text-white/70" : "text-text-secondary"}`}
                   >
                     <CheckIcon />
                     <span className="leading-5">{feature}</span>
