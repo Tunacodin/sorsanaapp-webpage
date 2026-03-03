@@ -5,15 +5,15 @@ import { fadeUpScale, fadeUp, staggerContainer } from "@/lib/animations";
 
 const plans = [
   {
-    name: "Başlangıç",
-    description: "Sınav hazırlığına yeni başlayanlar için temel araçlar",
-    price: "₺99",
+    name: "Ücretsiz",
+    description: "Sorsana'yı keşfetmek isteyen öğrenciler için",
+    price: "₺0",
     popular: false,
     features: [
+      "Günlük sınırlı soru sorma hakkı",
       "Temel soru bankasına erişim",
-      "Haftalık canlı soru çözüm seansları",
+      "Topluluk çözümlerini görüntüleme",
       "Standart destek hizmeti",
-      "Gelecek güncellemelerden indirim",
     ],
   },
   {
@@ -37,13 +37,13 @@ const plans = [
     price: "₺349",
     popular: false,
     features: [
-      "Tüm içeriklere özel erişim",
+      "Pro planındaki tüm özellikler",
       "Uzman eğitimcilerle birebir Soru-Cevap",
       "Öncelikli destek ile hızlı yanıt",
-      "Gelecek tüm kaynaklarda özel indirim",
       "Detaylı performans analizi ve raporlama",
       "VIP destek hizmeti",
       "Sınırsız OCR soru tanıma",
+      "Gelecek tüm kaynaklarda özel indirim",
     ],
   },
 ];

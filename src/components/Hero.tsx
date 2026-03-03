@@ -32,7 +32,7 @@ export default function Hero() {
           className="mx-auto max-w-[850px] text-center font-heading text-[64px] font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
         >
           Yapay zeka destekli{" "}
-          <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-white bg-clip-text text-transparent">
+          <span className="text-violet">
             SORSANA
           </span>{" "}
           ile başarıya ulaşmanın keyfini çıkar
