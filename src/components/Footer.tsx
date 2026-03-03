@@ -56,7 +56,10 @@ export default function Footer() {
                 Sorsana
               </span>
             </Link>
-            <p className="mt-4 max-w-[280px] text-sm leading-6 text-text-secondary">
+            <p className="mt-3 font-heading text-base font-semibold text-violet">
+              Sorun varsa Sorsana!
+            </p>
+            <p className="mt-3 max-w-[280px] text-sm leading-6 text-text-secondary">
               Dünya genelinde öğrencileri kaliteli eğitim ve geleceğin
               becerileriyle güçlendiriyoruz.
             </p>
