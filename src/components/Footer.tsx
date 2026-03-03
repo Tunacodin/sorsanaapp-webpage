@@ -40,24 +40,9 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-[1.2fr_1fr_1fr_1fr]">
           {/* Brand */}
           <motion.div variants={fadeUp}>
-            <Link href="/" className="flex items-center gap-2">
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                fill="none"
-              >
-                <rect x="2" y="2" width="10" height="10" rx="2" fill="#6d28d9" />
-                <rect x="16" y="2" width="10" height="10" rx="2" fill="#6d28d9" opacity="0.4" />
-                <rect x="2" y="16" width="10" height="10" rx="2" fill="#6d28d9" opacity="0.4" />
-                <rect x="16" y="16" width="10" height="10" rx="2" fill="#6d28d9" />
-              </svg>
-              <span className="font-heading text-xl font-bold italic text-foreground">
-                Sorsana
-              </span>
-            </Link>
-            <p className="mt-3 font-heading text-base font-semibold text-violet">
-              Sorun varsa Sorsana!
+            <p className="font-heading text-[48px] font-bold leading-[1.1] tracking-[-0.02em]">
+              <span className="text-foreground">Sorun varsa </span>
+              <span className="text-violet">Sorsana!</span>
             </p>
             <p className="mt-3 max-w-[280px] text-sm leading-6 text-text-secondary">
               Dünya genelinde öğrencileri kaliteli eğitim ve geleceğin
