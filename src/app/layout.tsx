@@ -14,8 +14,8 @@ const ibmPlexSans = IBM_Plex_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ProLingo - Language Learning",
-  description: "Master any language with ProLingo's expert-led curriculum",
+  title: "Sorsana - Sorun Varsa Sorsana!",
+  description: "Yapay zeka destekli soru-cevap platformu ile sınav hazırlığında fark yarat",
 };
 
 export default function RootLayout({
@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="tr">
       <body
         className={`${inter.variable} ${ibmPlexSans.variable} font-sans antialiased`}
       >
