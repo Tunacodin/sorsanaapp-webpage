@@ -15,16 +15,6 @@ export default function Hero() {
     <section className="px-8 pt-32 pb-0 overflow-hidden">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
-        {/* Slogan */}
-        <motion.p
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="mx-auto mb-4 text-center text-lg font-medium tracking-wide text-violet"
-        >
-          Sorun varsa Sorsana!
-        </motion.p>
-
         <motion.h1
           initial="hidden"
           animate="visible"
