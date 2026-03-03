@@ -73,9 +73,9 @@ export default function Hero() {
               89%
             </p>
             <p className="mt-1 text-sm text-text-secondary">
-              N1 pass rate of
+              Öğrencilerin sınav
               <br />
-              students
+              başarı oranı
             </p>
           </motion.div>
 
@@ -91,9 +91,9 @@ export default function Hero() {
               3,000+
             </p>
             <p className="mt-1 text-sm text-text-secondary">
-              Number of participants
+              Aktif öğrenci
               <br />
-              in cultural workshops
+              ve çözüm sayısı
             </p>
           </motion.div>
         </div>
