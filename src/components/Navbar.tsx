@@ -11,17 +11,9 @@ export default function Navbar() {
       <div className="mx-auto flex max-w-[1280px] items-center justify-between px-8 py-4">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <svg
-            width="28"
-            height="28"
-            viewBox="0 0 28 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect x="2" y="2" width="10" height="10" rx="2" fill="#6d28d9" />
-            <rect x="16" y="2" width="10" height="10" rx="2" fill="#6d28d9" opacity="0.4" />
-            <rect x="2" y="16" width="10" height="10" rx="2" fill="#6d28d9" opacity="0.4" />
-            <rect x="16" y="16" width="10" height="10" rx="2" fill="#6d28d9" />
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <rect width="32" height="32" rx="8" fill="#6d28d9" />
+            <text x="16" y="24" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="24" fill="white">S</text>
           </svg>
           <span className="font-heading text-xl font-bold italic text-foreground">
             Sorsana
