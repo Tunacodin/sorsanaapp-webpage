@@ -15,7 +15,7 @@ export default function Navbar() {
             <rect width="32" height="32" rx="8" fill="#6d28d9" />
             <text x="16" y="24" textAnchor="middle" fontFamily="Arial, Helvetica, sans-serif" fontWeight="bold" fontSize="24" fill="white">S</text>
           </svg>
-          <span className="font-heading text-xl font-bold italic text-foreground">
+          <span className="font-heading text-xl font-bold text-foreground">
             Sorsana
           </span>
         </Link>
