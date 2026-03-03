@@ -45,9 +45,9 @@ export default function Network() {
           variants={fadeUpScale}
           className="mx-auto max-w-[700px] text-center font-heading text-[56px] font-bold leading-[1.1] tracking-[-0.02em] text-foreground"
         >
-          Join an Exclusive
+          Türkiye&apos;nin Dört Bir Yanından
           <br />
-          Network of AI Innovators
+          Öğrenciler Bir Arada
         </motion.h2>
         <motion.p
           initial="hidden"
@@ -56,8 +56,8 @@ export default function Network() {
           variants={fadeUp}
           className="mx-auto mt-6 max-w-[600px] text-center text-base leading-7 text-text-secondary"
         >
-          The skills you&apos;ll master in this course open doors to high-demand,
-          future-proof careers with impressive earning potential
+          Sorsana ile binlerce öğrenci birbirine bağlanıyor, birlikte öğreniyor
+          ve sınav hedeflerine birlikte ulaşıyor
         </motion.p>
 
         {/* CTA */}
@@ -72,7 +72,7 @@ export default function Network() {
             href="#"
             className="inline-flex items-center gap-2 rounded-lg bg-[#f5d98a] px-7 py-3.5 text-sm font-bold uppercase tracking-wider text-foreground transition-colors hover:bg-[#ecc85e]"
           >
-            Enroll Now
+            Hemen Katıl
             <svg
               width="16"
               height="16"

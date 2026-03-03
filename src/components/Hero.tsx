@@ -15,13 +15,27 @@ export default function Hero() {
     <section className="px-8 pt-32 pb-0 overflow-hidden">
       <div className="mx-auto max-w-[1280px]">
         {/* Heading */}
+        {/* Slogan */}
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="mx-auto mb-4 text-center text-lg font-medium tracking-wide text-violet"
+        >
+          Sorun varsa Sorsana!
+        </motion.p>
+
         <motion.h1
           initial="hidden"
           animate="visible"
           variants={fadeUpScale}
           className="mx-auto max-w-[850px] text-center font-heading text-[64px] font-bold leading-[1.05] tracking-[-0.02em] text-foreground"
         >
-          Yapay zeka destekli Sorsana ile başarıya ulaşmanın keyfini çıkar
+          Yapay zeka destekli{" "}
+          <span className="bg-gradient-to-r from-violet-600 via-violet-400 to-white bg-clip-text text-transparent">
+            SORSANA
+          </span>{" "}
+          ile başarıya ulaşmanın keyfini çıkar
           <motion.span
             className="relative"
             initial={{ opacity: 0, rotate: -90 }}

@@ -7,21 +7,21 @@ const paths = [
   {
     title: "Aradığın Her Şey Burada",
     description:
-      "Matematik, Fizik, Biyoloji gibi farklı dersler için kategorize edilmiş sorular ve çözümler bulun. Gelişmiş arama sistemi ve akıllı filtreleme ile seviyenize uygun içeriklere kolayca ulaşın.",
+      "Kategorize edilmiş sorular, akıllı arama ve filtreleme ile seviyenize uygun içeriklere anında ulaşın.",
     image:
       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&h=700&fit=crop",
   },
   {
     title: "Sorulara Çözüm Bul",
     description:
-      "Deneyimli kullanıcılar ve öğretmenler tarafından paylaşılan detaylı çözümlere ulaşın. Kredi sistemi ile kaliteli içerik paylaşımını teşvik eder, uzman onaylı çözümlerle doğru bilgiye erişirsiniz.",
+      "Uzman onaylı detaylı çözümler ve kredi sistemiyle kaliteli içeriğe hızla ulaşın.",
     image:
       "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=500&h=700&fit=crop",
   },
   {
     title: "Kişisel Gelişim Yolculuğu",
     description:
-      "Çözülen soru sayısı, başarı rozetleri ve lider tablosu ile gelişiminizi takip edin. Haftalık hedefler belirleyerek düzenli çalışma alışkanlığı kazanın, detaylı analizlerle eksiklerinizi görün.",
+      "Rozetler, lider tablosu ve haftalık hedeflerle gelişiminizi takip edin, eksiklerinizi görün.",
     image:
       "https://images.unsplash.com/photo-1531482615713-2afd69097998?w=500&h=700&fit=crop",
   },
