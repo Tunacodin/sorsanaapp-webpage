@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gizlilik Politikası — Sorsana</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a2e;
+      background: #f7f8fc;
+    }
+
+    .lang-toggle {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 10px 24px;
+      display: flex;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .lang-btn {
+      border: 1px solid #7c3aed;
+      background: transparent;
+      color: #7c3aed;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .lang-btn.active, .lang-btn:hover {
+      background: #7c3aed;
+      color: #fff;
+    }
+
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      font-size: 13px;
+      color: #6b7280;
+      margin-bottom: 32px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .intro {
+      background: #fff;
+      border-left: 4px solid #7c3aed;
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 40px;
+      color: #374151;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #7c3aed;
+      margin: 40px 0 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    h2::before {
+      content: attr(data-num);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: #7c3aed;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #374151;
+      margin: 20px 0 8px;
+    }
+
+    p { color: #374151; margin-bottom: 12px; }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 12px;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 6px;
+      color: #374151;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 16px 0;
+    }
+
+    .card-title {
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 4px;
+    }
+
+    .card a {
+      color: #7c3aed;
+      text-decoration: none;
+      font-size: 13px;
+    }
+
+    .card a:hover { text-decoration: underline; }
+
+    .no-collect {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+
+    .no-collect li::before { color: #16a34a; content: "✓"; }
+    .no-collect li { color: #166534; }
+
+    .contact-box {
+      background: linear-gradient(135deg, #7c3aed11, #a855f711);
+      border: 1px solid #7c3aed33;
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 16px;
+    }
+
+    .contact-box a {
+      color: #7c3aed;
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .divider {
+      border: none;
+      border-top: 3px dashed #e5e7eb;
+      margin: 64px 0;
+    }
+
+    footer {
+      text-align: center;
+      color: #9ca3af;
+      font-size: 13px;
+      margin-top: 64px;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .container { padding: 32px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button class="lang-btn active" onclick="setLang('tr')" id="btn-tr">🇹🇷 Türkçe</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">🇬🇧 English</button>
+</div>
+
+<!-- ───────────────────────── TÜRKÇE ───────────────────────── -->
+<div class="section active" id="tr">
+  <div class="container">
+    <span class="badge">Gizlilik Politikası</span>
+    <h1>Sorsana Gizlilik Politikası</h1>
+    <p class="meta">Yürürlük tarihi: 8 Mayıs 2026 &nbsp;·&nbsp; Son güncelleme: 8 Mayıs 2026</p>
+
+    <div class="intro">
+      Sorsana ("biz", "uygulama"), Tuna Bostancıbaşı tarafından geliştirilen bir eğitim sosyal platformudur. Bu Gizlilik Politikası, Sorsana'nın kişisel verilerinizi nasıl topladığını, kullandığını ve koruduğunu açıklamaktadır.
+    </div>
+
+    <h2 data-num="1">Topladığımız Bilgiler</h2>
+
+    <h3>Hesap bilgileri</h3>
+    <ul>
+      <li>E-posta adresi — kayıt veya giriş sırasında</li>
+      <li>Kullanıcı adı — hesap oluştururken seçtiğiniz</li>
+      <li>Profil fotoğrafı (isteğe bağlı) — yüklemeniz hâlinde</li>
+    </ul>
+
+    <h3>Kullanıcı içeriği</h3>
+    <ul>
+      <li>Paylaştığınız sorular (metin ve fotoğraf)</li>
+      <li>Verdiğiniz çözümler ve yorumlar</li>
+      <li>Oy (upvote/downvote) ve rozet geçmişiniz</li>
+      <li>Yapay zeka sohbet geçmişiniz</li>
+    </ul>
+
+    <h3>Oyunlaştırma verileri</h3>
+    <ul>
+      <li>XP puanı, rozet ve unvan bilgileri</li>
+      <li>Haftalık lig sıralaması ve istatistikler</li>
+      <li>Günlük giriş serisi (streak) kayıtları</li>
+    </ul>
+
+    <h3>Teknik veriler</h3>
+    <ul>
+      <li>Cihaz push bildirim token'ı (Apple APNs / Google FCM) — yalnızca bildirimleri etkinleştirirseniz</li>
+      <li>Anonim çökme günlükleri ve tanısal veriler</li>
+    </ul>
+
+    <h2 data-num="2">Bilgileri Nasıl Kullanıyoruz</h2>
+    <ul>
+      <li>Hesabınızı oluşturmak ve yönetmek</li>
+      <li>Paylaştığınız soru ve çözümleri diğer kullanıcılara göstermek</li>
+      <li>XP, rozet ve liderboard sistemini işletmek</li>
+      <li>Yapay zeka sohbet özelliğini sağlamak</li>
+      <li>Onayladığınız bildirimleri göndermek</li>
+      <li>Bizimle iletişime geçtiğinizde destek sağlamak</li>
+      <li>Hataları tespit etmek ve uygulamayı iyileştirmek</li>
+    </ul>
+
+    <h2 data-num="3">Yapmadığımız Şeyler</h2>
+    <div class="no-collect">
+      <ul>
+        <li>Verilerinizi satmıyoruz</li>
+        <li>Verilerinizi reklamcılık amacıyla kullanmıyoruz</li>
+        <li>Sizi diğer uygulama veya web sitelerinde takip etmiyoruz</li>
+        <li>Verilerinizi üçüncü taraf reklam ağlarıyla paylaşmıyoruz</li>
+        <li>Açıkça izin vermedikçe hassas konum, kişiler veya mikrofon verisi toplamıyoruz</li>
+        <li>Kamera ve fotoğraf erişimi yalnızca siz soru fotoğrafı yüklemek istediğinizde talep edilir</li>
+      </ul>
+    </div>
+
+    <h2 data-num="4">Üçüncü Taraf Hizmetler</h2>
+    <p>Uygulamayı işletmek için yalnızca aşağıdaki hizmet sağlayıcıları kullanıyoruz. Bu sağlayıcılar verileri yalnızca bizim adımıza ve kendi gizlilik politikalarına göre işler:</p>
+
+    <div class="card">
+      <p class="card-title">Supabase</p>
+      <p>Kimlik doğrulama, hesap veritabanı, dosya depolama (soru fotoğrafları, profil görselleri).</p>
+      <a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Yapay Zeka Hizmet Sağlayıcısı (AI Chat)</p>
+      <p>Yapay zeka sohbet özelliği için mesajlarınız harici bir AI servisine iletilmektedir. Sohbet geçmişi yalnızca uygulamada saklanır ve model eğitimi için kullanılmaz.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Apple Push Notification Service / Google Firebase Cloud Messaging</p>
+      <p>Yalnızca onayladığınız push bildirimlerini iletmek için kullanılır.</p>
+    </div>
+
+    <h2 data-num="5">Veri Saklama</h2>
+    <p>Hesap verileriniz hesabınızı silene kadar saklanır. Hesabınızı sildiğinizde sorularınız, çözümleriniz, yorumlarınız ve tüm profil bilgileriniz 30 gün içinde sunucularımızdan kalıcı olarak silinir.</p>
+
+    <h2 data-num="6">Haklarınız</h2>
+    <p>Şunları yapabilirsiniz:</p>
+    <ul>
+      <li>Profilinizi ve içeriklerinizi uygulama içinde istediğiniz zaman düzenleyebilirsiniz</li>
+      <li>Paylaştığınız soru veya çözümleri silebilirsiniz</li>
+      <li>Hesabınızın tamamını silebilirsiniz (Profil → Ayarlar → Hesabı Sil)</li>
+      <li>Bildirimleri cihazınızın sistem ayarlarından kapatabilirsiniz</li>
+      <li>Verilerinizin bir kopyasını talep etmek için bizimle iletişime geçebilirsiniz</li>
+    </ul>
+    <p>KVKK kapsamında Türkiye'de ikamet ediyorsanız (veya AB/EEA, Birleşik Krallık, Kaliforniya'daysa), veri taşınabilirliği, işlemeye itiraz etme ve yerel veri koruma otoritesine şikayette bulunma gibi ek haklara sahipsiniz.</p>
+
+    <h2 data-num="7">Çocuklar</h2>
+    <p>Sorsana 13 yaşın altındaki çocuklara yönelik değildir. 13 yaşın altındaki bireylerden bilerek kişisel veri toplamıyoruz. Böyle bir durumun farkına varırsak söz konusu verileri derhal sileriz.</p>
+
+    <h2 data-num="8">Güvenlik</h2>
+    <p>Aktarımdaki ve depodaki veriler için endüstri standardı HTTPS/TLS şifrelemesi kullanıyoruz. Kimlik doğrulama token'ları, platformun güvenli depolaması (iOS Keychain / Android Keystore) aracılığıyla cihazınızda saklanır.</p>
+
+    <h2 data-num="9">Bu Politikadaki Değişiklikler</h2>
+    <p>Bu politikayı zaman zaman güncelleyebiliriz. Önemli değişiklikler uygulama içinde veya e-posta yoluyla duyurulacaktır. Üstteki "Son güncelleme" tarihi en son revizyonu gösterir.</p>
+
+    <h2 data-num="10">İletişim</h2>
+    <p>Gizlilik soruları, veri talepleri veya hesap silme yardımı için:</p>
+    <div class="contact-box">
+      <p>📧 E-posta: <a href="mailto:divizyonyazilim2@divizyon.org">divizyonyazilim2@divizyon.org</a></p>
+    </div>
+
+    <footer>
+      © 2026 Sorsana · Tuna Bostancıbaşı · Tüm hakları saklıdır.
+    </footer>
+  </div>
+</div>
+
+<!-- ───────────────────────── ENGLISH ───────────────────────── -->
+<div class="section" id="en">
+  <div class="container">
+    <span class="badge">Privacy Policy</span>
+    <h1>Sorsana Privacy Policy</h1>
+    <p class="meta">Effective date: May 8, 2026 &nbsp;·&nbsp; Last updated: May 8, 2026</p>
+
+    <div class="intro">
+      Sorsana ("we", "our", "the app") is an educational social platform developed by Tuna Bostancıbaşı. This Privacy Policy describes how Sorsana collects, uses, and safeguards your personal information.
+    </div>
+
+    <h2 data-num="1">Information We Collect</h2>
+
+    <h3>Account information</h3>
+    <ul>
+      <li>Email address — when you register or sign in</li>
+      <li>Username — chosen at registration</li>
+      <li>Profile photo (optional) — if you upload one</li>
+    </ul>
+
+    <h3>User content</h3>
+    <ul>
+      <li>Questions you post (text and photos)</li>
+      <li>Solutions and comments you submit</li>
+      <li>Your vote (upvote/downvote) and badge history</li>
+      <li>Your AI chat conversation history</li>
+    </ul>
+
+    <h3>Gamification data</h3>
+    <ul>
+      <li>XP points, badges, and rank information</li>
+      <li>Weekly league standings and statistics</li>
+      <li>Daily login streak records</li>
+    </ul>
+
+    <h3>Technical data</h3>
+    <ul>
+      <li>Device push notification token (Apple APNs / Google FCM) — only if you enable notifications</li>
+      <li>Anonymous crash logs and diagnostic data</li>
+    </ul>
+
+    <h2 data-num="2">How We Use Your Information</h2>
+    <ul>
+      <li>To create and maintain your account</li>
+      <li>To display your questions and solutions to other users</li>
+      <li>To operate the XP, badge, and leaderboard system</li>
+      <li>To power the AI chat feature</li>
+      <li>To send notifications you have opted into</li>
+      <li>To provide customer support when you contact us</li>
+      <li>To detect and fix bugs and improve the app</li>
+    </ul>
+
+    <h2 data-num="3">Data We Do Not Collect or Use</h2>
+    <div class="no-collect">
+      <ul>
+        <li>We do not sell your data</li>
+        <li>We do not use your data for advertising</li>
+        <li>We do not track you across other apps or websites</li>
+        <li>We do not share your data with third-party advertising networks</li>
+        <li>We do not collect precise location, contacts, or microphone data without explicit permission</li>
+        <li>Camera and photo library access is only requested when you choose to upload a question photo</li>
+      </ul>
+    </div>
+
+    <h2 data-num="4">Third-Party Services</h2>
+    <p>We use the following service providers strictly to operate the app. These providers process data only on our behalf and according to their own privacy policies:</p>
+
+    <div class="card">
+      <p class="card-title">Supabase</p>
+      <p>Authentication, account database, file storage (question photos, profile images).</p>
+      <a href="https://supabase.com/privacy" target="_blank">supabase.com/privacy</a>
+    </div>
+
+    <div class="card">
+      <p class="card-title">AI Service Provider (AI Chat)</p>
+      <p>Your messages are sent to an external AI service to power the chat feature. Conversation history is stored only within the app and is not used for model training.</p>
+    </div>
+
+    <div class="card">
+      <p class="card-title">Apple Push Notification Service / Google Firebase Cloud Messaging</p>
+      <p>Used solely to deliver push notifications you have opted into.</p>
+    </div>
+
+    <h2 data-num="5">Data Retention</h2>
+    <p>Your account data is retained until you delete your account. When you delete your account, all your questions, solutions, comments, and profile data are permanently removed from our servers within 30 days.</p>
+
+    <h2 data-num="6">Your Rights</h2>
+    <p>You can:</p>
+    <ul>
+      <li>Access and edit your profile and content at any time inside the app</li>
+      <li>Delete individual questions or solutions you have posted</li>
+      <li>Delete your entire account (Profile → Settings → Delete Account)</li>
+      <li>Disable notifications in your device's system settings</li>
+      <li>Request a copy of your data by contacting us</li>
+    </ul>
+    <p>If you are an EU/EEA, UK, California, or Turkish KVKK resident, you have additional rights including data portability, the right to object to processing, and the right to lodge a complaint with your local data protection authority.</p>
+
+    <h2 data-num="7">Children</h2>
+    <p>Sorsana is not directed to children under 13. We do not knowingly collect personal information from children under 13. If we learn that we have collected such data, we will delete it promptly.</p>
+
+    <h2 data-num="8">Security</h2>
+    <p>We use industry-standard HTTPS/TLS encryption for data in transit and at rest. Authentication tokens are stored securely on your device using the platform's secure storage (iOS Keychain / Android Keystore).</p>
+
+    <h2 data-num="9">Changes to This Policy</h2>
+    <p>We may update this policy from time to time. Material changes will be announced inside the app or via email. The "Last updated" date at the top reflects the most recent revision.</p>
+
+    <h2 data-num="10">Contact</h2>
+    <p>For privacy questions, data requests, or account deletion assistance:</p>
+    <div class="contact-box">
+      <p>📧 Email: <a href="mailto:divizyonyazilim2@divizyon.org">divizyonyazilim2@divizyon.org</a></p>
+    </div>
+
+    <footer>
+      © 2026 Sorsana · Tuna Bostancıbaşı · All rights reserved.
+    </footer>
+  </div>
+</div>
+
+<script>
+  function setLang(lang) {
+    document.getElementById('tr').classList.toggle('active', lang === 'tr');
+    document.getElementById('en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-tr').classList.toggle('active', lang === 'tr');
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.documentElement.lang = lang;
+  }
+</script>
+
+</body>
+</html>
