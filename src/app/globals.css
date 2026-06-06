@@ -1,32 +1,338 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #25282b;
-  --text-secondary: #52575c;
-  --violet: #6d28d9;
-  --violet-light: #c4b5fd;
-  --green: #8bc7ad;
-  --blue: #9bb3d5;
-  --yellow: #ffd370;
-  --cream: #f5f3ff;
+  --paper: #ffffff;
+  --ink: #16151a;
+  --ink-soft: #4a4753;
+  --ink-mute: #807c8a;
+  --rule: #ebe6dc;
+  --lavender: #7c5dfa;
+  --lavender-deep: #5e3bdb;
+  --lavender-50: #f5f3ff;
+  --lavender-100: #ece5ff;
+  --lavender-200: #d7c7ff;
+  --coin: #ffcc33;
+  --coin-deep: #d99300;
+  --rose-50: #fff1f2;
+  --pink-50: #fdf2f8;
+  --orange-50: #fff7ed;
+  --amber-50: #fffbeb;
+  --yellow-50: #fefce8;
+  --green-50: #f0fdf4;
+  --emerald-50: #ecfdf5;
+  --sky-50: #f0f9ff;
+  --blue-50: #eff6ff;
+  --indigo-50: #eef2ff;
+  --violet-50: #f5f3ff;
+  --purple-50: #faf5ff;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-text-secondary: var(--text-secondary);
-  --color-violet: var(--violet);
-  --color-violet-light: var(--violet-light);
-  --color-green: var(--green);
-  --color-blue: var(--blue);
-  --color-yellow: var(--yellow);
-  --color-cream: var(--cream);
-  --font-sans: var(--font-inter);
-  --font-heading: var(--font-ibm-plex-sans);
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-rule: var(--rule);
+  --color-lavender: var(--lavender);
+  --color-lavender-deep: var(--lavender-deep);
+  --color-lavender-50: var(--lavender-50);
+  --color-lavender-100: var(--lavender-100);
+  --color-lavender-200: var(--lavender-200);
+  --color-coin: var(--coin);
+  --color-coin-deep: var(--coin-deep);
+  --color-rose-50: var(--rose-50);
+  --color-pink-50: var(--pink-50);
+  --color-orange-50: var(--orange-50);
+  --color-amber-50: var(--amber-50);
+  --color-yellow-50: var(--yellow-50);
+  --color-green-50: var(--green-50);
+  --color-emerald-50: var(--emerald-50);
+  --color-sky-50: var(--sky-50);
+  --color-blue-50: var(--blue-50);
+  --color-indigo-50: var(--indigo-50);
+  --color-violet-50: var(--violet-50);
+  --color-purple-50: var(--purple-50);
+
+  --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffffff;
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--lavender);
+  color: #ffffff;
+  border-radius: 9999px;
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  box-shadow:
+    0 2px 0 rgba(124, 93, 250, 0.18) inset,
+    0 8px 24px -8px rgba(124, 93, 250, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.btn-primary:hover {
+  background: var(--lavender-deep);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--ink);
+  color: var(--ink);
+  border-radius: 9999px;
+  padding: 12.5px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  background: transparent;
+  transition: background 0.15s ease;
+}
+.btn-outline:hover {
+  background: #ffffff;
+}
+
+.btn-store {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--ink);
+  color: #ffffff;
+  border-radius: 14px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: opacity 0.15s ease;
+}
+.btn-store:hover { opacity: 0.9; }
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  background: var(--lavender-100);
+  color: var(--lavender-deep);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.chip-soft {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--lavender-deep);
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.shadow-soft {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 12px 32px -16px rgba(20, 18, 30, 0.18),
+    0 4px 12px -4px rgba(20, 18, 30, 0.08);
+}
+
+.phone-frame {
+  position: relative;
+  padding: 8px;
+  border-radius: 38px;
+  background: linear-gradient(160deg, #1a1820 0%, #2e2a36 50%, #16141c 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.08) inset,
+    0 30px 60px -16px rgba(20, 18, 30, 0.32),
+    0 8px 24px -8px rgba(20, 18, 30, 0.18);
+}
+
+.phone-screen {
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+}
+
+.tablet-frame {
+  position: relative;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset,
+    0 1px 0 rgba(255, 255, 255, 0.18) inset,
+    0 0 0 1px rgba(0, 0, 0, 0.5),
+    0 30px 60px -16px rgba(20, 18, 30, 0.42),
+    0 10px 28px -10px rgba(20, 18, 30, 0.25);
+}
+
+/* Front camera dot — both variants share style, different positions */
+.tablet-frame::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #1d1820 0%, #050306 80%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.04),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 2;
+}
+
+/* ─── iPad variant — ultra-thin bezel (iPad Pro M4) ─── */
+.tablet-frame--ios {
+  padding: 8px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #3a373f 0%, #1f1d24 50%, #14121a 100%);
+}
+.tablet-frame--ios::before {
+  /* Front camera on top edge — sits within the thin bezel */
+  top: 3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+}
+
+/* ─── Android variant — thinner bezel, less rounded, hole-punch in display ─── */
+.tablet-frame--android {
+  padding: 11px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #2d3036 0%, #1a1c20 50%, #0d0e12 100%);
+}
+.tablet-frame--android::before {
+  /* hole-punch sits just inside the screen, top-center */
+  top: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+}
+
+.tablet-screen {
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  background: #fff;
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.45) inset;
+}
+.tablet-frame--android .tablet-screen {
+  border-radius: 6px;
+}
+
+/* ─── Apple Pencil mockup ─── */
+.apple-pencil {
+  position: relative;
+  width: 8px;
+  height: 200px;
+  border-radius: 4px;
+  background: linear-gradient(180deg, #f7f7f9 0%, #e8e8ea 50%, #cfcfd2 100%);
+  box-shadow:
+    0 6px 14px rgba(20, 18, 30, 0.18),
+    0 2px 4px rgba(20, 18, 30, 0.1),
+    inset -1px 0 0 rgba(255, 255, 255, 0.6),
+    inset 1px 0 0 rgba(0, 0, 0, 0.06);
+}
+.apple-pencil::before {
+  /* tip cone */
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 12px solid #1c1a22;
+  transform: translateX(-50%);
+}
+.apple-pencil::after {
+  /* dark band near tip */
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.18));
+  border-radius: 0 0 4px 4px;
+}
+
+.sticker {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: 600;
+  background: #ffffff;
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 10px 24px -10px rgba(20, 18, 30, 0.2),
+    0 4px 8px -4px rgba(20, 18, 30, 0.08);
+}
+
+.coin-underline {
+  background-image: linear-gradient(transparent 62%, rgba(255, 204, 51, 0.5) 62%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0.06em;
+}
+
+
+.lavender-underline {
+  background-image: linear-gradient(transparent 64%, rgba(124, 93, 250, 0.22) 64%);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding: 0 0.06em;
+}
+
+.tilt-l { transform: rotate(-3deg); }
+.tilt-r { transform: rotate(3deg); }
+
+::selection {
+  background: var(--lavender-100);
+  color: var(--ink);
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.reveal { animation: fade-up 0.7s ease both; }

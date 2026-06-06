@@ -1,32 +1,34 @@
 import type { Metadata } from "next";
-import { Inter, IBM_Plex_Sans } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
+const geist = Geist({
+  variable: "--font-geist",
+  subsets: ["latin", "latin-ext"],
+  display: "swap",
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
-  variable: "--font-ibm-plex-sans",
-  weight: ["400", "500", "600", "700"],
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Sorsana - Sorun Varsa Sorsana!",
-  description: "Yapay zeka destekli soru-cevap platformu ile sınav hazırlığında fark yarat",
+  title: "Sorsana: Sorun varsa, Sorsana.",
+  description:
+    "YKS'ye hazırlanan binlerce öğrencinin birbirine yardım ettiği, yapay zeka ile takıldığı yerden geçtiği, motivasyonunu sosyal bir alanda tazelediği uygulama. Ücretsiz beta.",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="tr">
       <body
-        className={`${inter.variable} ${ibmPlexSans.variable} font-sans antialiased`}
+        className={`${geist.variable} ${geistMono.variable} antialiased`}
+        suppressHydrationWarning
       >
         {children}
       </body>
