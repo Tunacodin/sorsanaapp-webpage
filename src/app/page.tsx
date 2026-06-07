@@ -81,8 +81,8 @@ function Phone({
         transform: `rotate(${tilt}deg)`,
       }}
     >
-      <div className="phone-screen w-full h-full">
-        <Image src={src} alt={alt} fill sizes={`${width}px`} className="object-cover" />
+      <div className="phone-screen w-full h-full bg-white">
+        <Image src={src} alt={alt} fill sizes={`${width}px`} className="object-contain" />
       </div>
     </div>
   );
@@ -119,6 +119,44 @@ function Tablet({
   );
 }
 
+function FeatureFloat({
+  num,
+  title,
+  body,
+  bg,
+  ink,
+  chip,
+  tilt = 0,
+  className = "",
+}: {
+  num: string;
+  title: string;
+  body: string;
+  bg: string;
+  ink: string;
+  chip: string;
+  tilt?: number;
+  className?: string;
+}) {
+  return (
+    <article
+      className={`feature-card-reveal absolute rounded-2xl p-3.5 w-[210px] shadow-soft border border-[color:var(--rule)] z-30 ${className}`}
+      style={{ background: bg, ["--tilt" as string]: `${tilt}deg` } as React.CSSProperties}
+    >
+      <div className="flex items-center gap-2 mb-1.5">
+        <span
+          className="font-mono text-[10px] inline-flex items-center px-1.5 py-0.5 rounded"
+          style={{ background: chip, color: ink }}
+        >
+          {num}
+        </span>
+        <h3 className="text-[13px] font-bold leading-tight flex-1" style={{ color: ink }}>{title}</h3>
+      </div>
+      <p className="text-[11.5px] leading-snug text-[color:var(--ink-soft)]">{body}</p>
+    </article>
+  );
+}
+
 function StarRow({ rating = 4.8 }: { rating?: number }) {
   return (
     <div className="flex items-center gap-1.5">
@@ -151,14 +189,17 @@ export default function Home() {
             />
             <span className="text-[20px] font-bold tracking-tight">Sorsana</span>
           </Link>
-          <div className="hidden md:flex items-center gap-7 text-[14px] font-medium">
-            <a href="#nasil" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">Nasıl çalışır</a>
-            <a href="#ozellikler" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">Özellikler</a>
-            <a href="#topluluk" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">Topluluk</a>
-            <a href="#sss" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">SSS</a>
-            <a href="#indir" className="btn-primary text-[13px] px-3.5 py-1 !rounded-lg">Hemen indir</a>
+          <div className="flex items-center gap-5 md:gap-7">
+            <div className="hidden md:flex items-center gap-7 text-[14px] font-medium">
+              <a href="#nasil" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">Nasıl çalışır</a>
+              <a href="#topluluk" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">Topluluk</a>
+              <a href="#sss" className="text-[color:var(--ink-soft)] hover:text-[color:var(--ink)]">SSS</a>
+            </div>
+            <a href="#indir" className="btn-primary text-[13px] px-3.5 py-1 !rounded-lg">
+              <span className="hidden md:inline">Hemen indir</span>
+              <span className="md:hidden">İndir</span>
+            </a>
           </div>
-          <a href="#indir" className="md:hidden btn-primary text-[12px] px-3 py-1 !rounded-lg">İndir</a>
         </div>
       </nav>
 
@@ -172,7 +213,7 @@ export default function Home() {
                 "radial-gradient(60% 60% at 80% 10%, var(--violet-50) 0%, transparent 60%), radial-gradient(50% 60% at 0% 100%, var(--amber-50) 0%, transparent 55%)",
             }}
           />
-          <div className="max-w-[1200px] mx-auto px-5 md:px-8 pt-10 md:pt-14 pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="max-w-[1200px] mx-auto px-5 md:px-8 pt-10 md:pt-14 pb-12 md:pb-16 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 items-center">
             <div className="md:col-span-7 flex flex-col gap-5">
               <h1 className="text-[32px] sm:text-[44px] md:text-[56px] font-bold leading-[1.1] md:leading-[1.05] tracking-tight">
                 Seninle aynı sınav <br className="hidden md:inline" /> sürecinden geçen <br className="hidden md:inline" /> <span className="coin-underline">insanlar burada.</span>
@@ -209,7 +250,7 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="md:col-span-5 relative flex justify-center md:justify-end pt-2 md:pt-0">
+            <div className="md:col-span-5 relative flex justify-center pt-2 md:pt-0">
               <div
                 className="absolute w-[240px] h-[240px] md:w-[300px] md:h-[300px] rounded-full -z-0"
                 style={{ background: "var(--lavender-100)", opacity: 0.6, top: "10%", right: "10%" }}
@@ -228,7 +269,7 @@ export default function Home() {
               {/* Desktop composition — phone + tablet + pen */}
               <div className="relative hidden md:block" style={{ width: 540, height: 420 }}>
                 <div className="absolute left-0 bottom-0">
-                  <Phone src="/screens/01-feed.jpeg" alt="Sorsana feed ekranı" tilt={-4} width={170} />
+                  <Phone src="/screens/01-feed.jpeg" alt="Sorsana feed ekranı" tilt={4} width={170} />
                 </div>
                 <div className="absolute right-8 bottom-0">
                   <Tablet src="/tablet/canvas-tablet.png" alt="Sorsana tablet" tilt={3} width={340} variant="ios" />
@@ -265,9 +306,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* float gap — card 01 */}
+        <div className="hidden lg:block relative h-0 max-w-[1200px] mx-auto px-5 md:px-8 z-30 pointer-events-none">
+          <FeatureFloat
+            num="01"
+            title="Soru çöz, kredi kazan"
+            body="Başkasının sorusunu çözünce kredi senin. Krediyle kendi sorunu paylaş."
+            bg="var(--violet-50)"
+            ink="#5b21b6"
+            chip="#ddd6fe"
+            tilt={-7}
+            className="-top-6 left-[8%]"
+          />
+        </div>
+
         {/* ───────────── POSITIONING — CEBİNDEKİ SINAV TOPLULUĞU ───────────── */}
-        <section id="nasil" className="py-12 md:py-16">
-          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <section id="nasil" className="py-12 md:py-16 relative">
+          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 items-center">
             <div className="md:col-span-7 flex flex-col gap-5">
               <span className="eyebrow">Pozisyon</span>
               <h2 className="text-[28px] md:text-[40px] font-bold leading-[1.1] tracking-tight">
@@ -278,7 +333,7 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="md:col-span-5 relative flex justify-center md:justify-end min-h-[380px]">
+            <div className="md:col-span-5 relative flex justify-center min-h-[380px]">
               <div
                 className="absolute w-[260px] h-[260px] rounded-full -z-0"
                 style={{ background: "var(--lavender-100)", opacity: 0.55, top: "10%", right: "10%" }}
@@ -315,16 +370,30 @@ export default function Home() {
           </div>
         </section>
 
+        {/* float gap — card 02 */}
+        <div className="hidden lg:block relative h-0 max-w-[1200px] mx-auto px-5 md:px-8 z-30 pointer-events-none">
+          <FeatureFloat
+            num="02"
+            title="Farklı kaynaklardan sorular"
+            body="Aynı sınava hazırlananların paylaştığı sorular akışında."
+            bg="var(--blue-50)"
+            ink="#1d4ed8"
+            chip="#bfdbfe"
+            tilt={6}
+            className="-top-10 right-[12%]"
+          />
+        </div>
+
         {/* ───────────── PRIMARY MECHANIC: SORU PAYLAŞ + ÇÖZÜM AL + KREDİ ───────────── */}
-        <section className="py-12 md:py-16" style={{ background: "var(--paper)" }}>
-          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            <div className="md:col-span-5 relative flex justify-center md:justify-start order-1">
+        <section className="py-12 md:py-16 relative" style={{ background: "var(--paper)" }}>
+          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 items-center">
+            <div className="md:col-span-5 relative flex justify-center order-1">
               <div
                 className="absolute w-[220px] h-[220px] rounded-full -z-0"
                 style={{ background: "var(--amber-50)", opacity: 0.85, top: "8%", right: "15%" }}
               />
               <div className="relative">
-                <Phone src="/screens/11-post-detay.png" alt="Sorsana soru detay — topluluktan çözümler" tilt={-3} width={210} />
+                <Phone src="/screens/05-ai-home.jpeg" alt="Sorsana — soru sor, çözüm al" tilt={-3} width={210} />
                 <div className="absolute -right-12 top-16 sticker tilt-r">
                   <div className="flex -space-x-1.5">
                     {[
@@ -371,8 +440,22 @@ export default function Home() {
           </div>
         </section>
 
+        {/* float gap — card 03 */}
+        <div className="hidden lg:block relative h-0 max-w-[1200px] mx-auto px-5 md:px-8 z-30 pointer-events-none">
+          <FeatureFloat
+            num="03"
+            title="AI ile adım adım çöz"
+            body="Sorsana AI soruyu adım adım çözüp her adımı açıklar."
+            bg="var(--orange-50)"
+            ink="#9a3412"
+            chip="#fed7aa"
+            tilt={-4}
+            className="top-[260px] left-[6%]"
+          />
+        </div>
+
         {/* ───────────── SORU ÇÖZÜM EKRANI (CANVAS) — CENTERED ───────────── */}
-        <section className="py-12 md:py-16">
+        <section className="py-12 md:py-16 relative">
           <div className="max-w-[1200px] mx-auto px-5 md:px-8 flex flex-col gap-10 items-center">
             <div className="text-center max-w-2xl flex flex-col gap-3">
               <span className="eyebrow mx-auto">Otobüste · Durakta · Kafede · Masa başında</span>
@@ -406,9 +489,23 @@ export default function Home() {
           </div>
         </section>
 
+        {/* float gap — card 06 */}
+        <div className="hidden lg:block relative h-0 max-w-[1200px] mx-auto px-5 md:px-8 z-30 pointer-events-none">
+          <FeatureFloat
+            num="06"
+            title="Profilinde biriktir"
+            body="Çözdüğün, paylaştığın, kaydettiğin sorular profilinde — sınav öncesi tek arşiv."
+            bg="var(--emerald-50)"
+            ink="#065f46"
+            chip="#a7f3d0"
+            tilt={9}
+            className="-top-6 right-[6%]"
+          />
+        </div>
+
         {/* ───────────── AI TUTOR SHOWCASE ───────────── */}
-        <section className="py-12 md:py-16">
-          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <section className="py-12 md:py-16 relative">
+          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 items-center">
             <div className="md:col-span-7 flex flex-col gap-4">
               <span className="eyebrow">Ücretsiz krediler · 7/24 · Her ders</span>
               <h2 className="text-[26px] md:text-[36px] font-bold leading-[1.15]">
@@ -432,14 +529,14 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="md:col-span-5 relative flex justify-center md:justify-end">
+            <div className="md:col-span-5 relative flex justify-center">
               <div
                 className="absolute w-[220px] h-[220px] rounded-full -z-0"
                 style={{ background: "var(--violet-50)", opacity: 0.9, top: "10%", left: "20%" }}
               />
               <div className="relative">
-                <Phone src="/screens/06-ai-solution.jpeg" alt="Sorsana AI çözüm" tilt={-3} width={180} />
-                <div className="absolute -right-3 top-28 sticker tilt-r">
+                <Phone src="/screens/06-ai-solution.jpeg" alt="Sorsana AI çözüm" tilt={3} width={180} />
+                <div className="absolute -left-6 -bottom-3 sticker tilt-l">
                   <span className="font-mono text-[11px] text-[color:var(--lavender-deep)]">PROMPT</span>
                   <span>Adım adım anlat</span>
                 </div>
@@ -449,15 +546,15 @@ export default function Home() {
         </section>
 
         {/* ───────────── MOTIVATION + PHONE ───────────── */}
-        <section className="py-12 md:py-16">
-          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-            <div className="md:col-span-5 relative flex justify-center md:justify-start order-2 md:order-1 min-h-[360px]">
+        <section className="py-12 md:py-16 relative">
+          <div className="max-w-[1200px] mx-auto px-5 md:px-8 grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-4 items-center">
+            <div className="md:col-span-5 relative flex justify-center order-2 md:order-1 min-h-[360px]">
               <div
                 className="absolute w-[220px] h-[220px] rounded-full -z-0"
                 style={{ background: "var(--amber-50)", top: "8%", right: "0%" }}
               />
               <div className="relative">
-                <Phone src="/screens/07-notifications.jpeg" alt="Sorsana bildirim ekranı" tilt={3} width={200} />
+                <Phone src="/screens/07-notifications.png" alt="Sorsana bildirim ekranı" tilt={-3} width={200} />
 
                 {/* Floating ranks + badges — real PNGs from app */}
                 <div className="absolute -right-10 -top-2 z-30" style={{ transform: "rotate(8deg)" }}>
@@ -510,50 +607,57 @@ export default function Home() {
               <p className="text-[15px] text-[color:var(--ink-soft)] max-w-xl">
                 Soru çöz, deneyimini paylaş, özgüven kazan.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="rounded-2xl p-4 border border-[color:var(--rule)]" style={{ background: "var(--amber-50)" }}>
-                  <Coin className="w-8 h-8 mb-2" />
-                  <p className="text-[14px] font-bold">Kredi &amp; XP</p>
+
+              {/* Rozet + Lig — yan yana iki grouped stack */}
+              <div className="flex flex-wrap items-center gap-8 pt-3">
+                <div className="flex items-center gap-2.5">
+                  <div className="flex -space-x-4">
+                    {[
+                      "/badges/yardimsever_4.png",
+                      "/badges/soru_avcisi_4.png",
+                      "/badges/gece_baykusu_4.png",
+                      "/badges/sampiyon_4.png",
+                    ].map((src, i) => (
+                      <Image
+                        key={src}
+                        src={src}
+                        alt=""
+                        width={64}
+                        height={64}
+                        className="w-[52px] h-[52px] md:w-[56px] md:h-[56px] drop-shadow-md"
+                        style={{ zIndex: 10 - i }}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[13px] md:text-[14px] font-semibold text-[color:var(--ink)]">
+                    +20 rozet
+                  </span>
                 </div>
-                <div className="rounded-2xl p-4 border border-[color:var(--rule)] relative overflow-hidden" style={{ background: "var(--violet-50)" }}>
-                  <Image
-                    src="/badges/matematik_mimari_4.png"
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="mb-2"
-                    aria-hidden
-                  />
-                  <p className="text-[14px] font-bold">20+ rozet</p>
-                  <Image
-                    src="/badges/yardimsever_4.png"
-                    alt=""
-                    width={42}
-                    height={42}
-                    className="absolute -right-2 -bottom-2 opacity-90"
-                    style={{ transform: "rotate(12deg)" }}
-                    aria-hidden
-                  />
-                </div>
-                <div className="rounded-2xl p-4 border border-[color:var(--rule)] relative overflow-hidden" style={{ background: "var(--blue-50)" }}>
-                  <Image
-                    src="/ranks/hukumdar.png"
-                    alt=""
-                    width={40}
-                    height={40}
-                    className="mb-2"
-                    aria-hidden
-                  />
-                  <p className="text-[14px] font-bold">6 lig</p>
-                  <Image
-                    src="/ranks/ustat.png"
-                    alt=""
-                    width={34}
-                    height={34}
-                    className="absolute -right-1 -bottom-1 opacity-90"
-                    style={{ transform: "rotate(-10deg)" }}
-                    aria-hidden
-                  />
+
+                <div className="flex items-center gap-2.5">
+                  <div className="flex -space-x-3">
+                    {[
+                      "/ranks/cirak.png",
+                      "/ranks/kasif.png",
+                      "/ranks/uzman.png",
+                      "/ranks/ustat.png",
+                      "/ranks/hukumdar.png",
+                      "/ranks/efsane.png",
+                    ].map((src, i) => (
+                      <Image
+                        key={src}
+                        src={src}
+                        alt=""
+                        width={64}
+                        height={64}
+                        className="w-[44px] h-[44px] md:w-[48px] md:h-[48px] drop-shadow-md"
+                        style={{ zIndex: 10 - i }}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[13px] md:text-[14px] font-semibold text-[color:var(--ink)]">
+                    6 lig
+                  </span>
                 </div>
               </div>
             </div>
@@ -561,7 +665,17 @@ export default function Home() {
         </section>
 
         {/* ───────────── TESTIMONIALS ───────────── */}
-        <section className="py-12 md:py-16" style={{ background: "var(--paper)" }}>
+        <section className="py-12 md:py-16 relative" style={{ background: "var(--paper)" }}>
+          <FeatureFloat
+            num="05"
+            title="Görevleri tamamla, lig atla"
+            body="Etkileşim XP'ye dönüşür. Haftalık lig + 20+ rozet kazan."
+            bg="var(--amber-50)"
+            ink="#92400e"
+            chip="#fde68a"
+            tilt={-8}
+            className="hidden lg:block top-10 right-[6%]"
+          />
           <div className="max-w-[1200px] mx-auto px-5 md:px-8">
             <div className="text-center max-w-2xl mx-auto flex flex-col gap-3 mb-8">
               <span className="eyebrow mx-auto">Öğrenciler diyor ki</span>
@@ -636,89 +750,22 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ───────────── FEATURES GRID ───────────── */}
-        <section id="ozellikler" className="py-12 md:py-16">
-          <div className="max-w-[1200px] mx-auto px-5 md:px-8">
-            <div className="text-center max-w-2xl mx-auto flex flex-col gap-3 mb-8">
-              <span className="eyebrow mx-auto">Özellikler</span>
-              <h2 className="text-[26px] md:text-[36px] font-bold leading-tight">
-                Sınav sürecini birlikte taşıyan <span className="lavender-underline">altı modül.</span>
-              </h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-              {[
-                {
-                  bg: "var(--violet-50)",
-                  ink: "#5b21b6",
-                  chip: "#ddd6fe",
-                  title: "Soru çöz, kredi kazan",
-                  body: "Soru çöz, kredi biriktir. Krediyle kendi sorunu paylaş.",
-                  tags: ["Akran öğrenmesi"],
-                },
-                {
-                  bg: "var(--blue-50)",
-                  ink: "#1d4ed8",
-                  chip: "#bfdbfe",
-                  title: "Farklı kaynaklardan sorular gör",
-                  body: "Aynı sınava hazırlananların paylaştığı sorular akışında.",
-                  tags: ["Konu filtresi"],
-                },
-                {
-                  bg: "var(--orange-50)",
-                  ink: "#9a3412",
-                  chip: "#fed7aa",
-                  title: "AI ile adım adım çöz",
-                  body: "Sorsana AI soruyu adım adım çözüp her adımı açıklar.",
-                  tags: ["7/24"],
-                },
-                {
-                  bg: "var(--rose-50)",
-                  ink: "#9f1239",
-                  chip: "#fecdd3",
-                  title: "Fikir al, görüş paylaş",
-                  body: "Topluluğun parçası ol, deneyimini aktar.",
-                  tags: ["Topluluk"],
-                },
-                {
-                  bg: "var(--amber-50)",
-                  ink: "#92400e",
-                  chip: "#fde68a",
-                  title: "Görevleri tamamla, lig atla",
-                  body: "Sıralamanı yükselt, rozetler kazan.",
-                  tags: ["20+ rozet"],
-                },
-                {
-                  bg: "var(--emerald-50)",
-                  ink: "#065f46",
-                  chip: "#a7f3d0",
-                  title: "Profilinde biriktir",
-                  body: "Çözdüğün, paylaştığın, kaydettiğin sorular tek arşivde.",
-                  tags: ["Arşiv"],
-                },
-              ].map((f, i) => (
-                <article key={f.title} className="card shadow-soft" style={{ background: f.bg }}>
-                  <div
-                    className="font-mono text-[12px] mb-4 inline-flex items-center px-2 py-0.5 rounded-md"
-                    style={{ background: f.chip, color: f.ink }}
-                  >
-                    {String(i + 1).padStart(2, "0")}
-                  </div>
-                  <h3 className="text-[19px] font-bold mb-2" style={{ color: f.ink }}>{f.title}</h3>
-                  <p className="text-[14px] leading-[1.55] text-[color:var(--ink-soft)] mb-4">{f.body}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {f.tags.map((t) => (
-                      <span key={t} className="chip-soft">{t}</span>
-                    ))}
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* float gap — card 04 */}
+        <div className="hidden lg:block relative h-0 max-w-[1200px] mx-auto px-5 md:px-8 z-30 pointer-events-none">
+          <FeatureFloat
+            num="04"
+            title="Fikir al, görüş paylaş"
+            body="Topluluğun parçası ol, deneyimini aktar."
+            bg="var(--rose-50)"
+            ink="#9f1239"
+            chip="#fecdd3"
+            tilt={5}
+            className="top-16 right-[4%]"
+          />
+        </div>
 
         {/* ───────────── COMMUNITY / AKRAN EKOSİSTEMİ ───────────── */}
-        <section id="topluluk" className="py-12 md:py-16" style={{ background: "var(--paper)" }}>
+        <section id="topluluk" className="py-12 md:py-16 relative" style={{ background: "var(--paper)" }}>
           <div className="max-w-[1200px] mx-auto px-5 md:px-8">
             <div className="text-center max-w-3xl mx-auto flex flex-col gap-3 mb-8">
               <span className="eyebrow mx-auto">Fikir al, görüş paylaş, topluluğun parçası ol</span>
@@ -846,10 +893,6 @@ export default function Home() {
                   a: "Şu an beta süresince tamamen ücretsiz. Hesap aç, soru çöz, AI'a sor — kredi kartı yok. İleride premium plan eklenebilir ama temel feed, AI sınırlı kullanım, topluluk her zaman ücretsiz kalacak.",
                 },
                 {
-                  q: "Sadece YKS için mi?",
-                  a: "Şu anlık evet. YKS müfredatına odaklı (TYT + AYT) — sorular o sınava göre kategorize, AI o konularda eğitildi. LGS ve diğer sınavlar 2026 sonrası gelecek.",
-                },
-                {
                   q: "AI nasıl çözüm sunuyor?",
                   a: "Soruyu adım adım çözüyor — her adımda kullandığı kuralı ve neden o kuralı seçtiğini açıklıyor. Sonuç + mantık birlikte gelir, sınavda aynı soruyla karşılaştığında nasıl yapacağını bilirsin.",
                 },
@@ -936,7 +979,7 @@ export default function Home() {
           </div>
           <div className="md:col-span-2 flex flex-col gap-2">
             <p className="text-[12px] uppercase tracking-wider text-[color:var(--ink-mute)] font-mono mb-1">Ürün</p>
-            <a className="text-[13px] hover:text-[color:var(--lavender-deep)]" href="#ozellikler">Özellikler</a>
+            <a className="text-[13px] hover:text-[color:var(--lavender-deep)]" href="#nasil">Nasıl çalışır</a>
             <a className="text-[13px] hover:text-[color:var(--lavender-deep)]" href="#topluluk">Topluluk</a>
             <a className="text-[13px] hover:text-[color:var(--lavender-deep)]" href="#sss">SSS</a>
           </div>
