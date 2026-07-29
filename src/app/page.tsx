@@ -29,7 +29,7 @@ function Coin({ className = "" }: { className?: string }) {
 
 function AppStoreBadge() {
   return (
-    <a href="#" aria-label="App Store'dan hemen indir" className="inline-flex items-center">
+    <a href="https://apps.apple.com/tr/app/sorsana-soru-sor-sosyalle%C5%9F/id6764331153?l=tr" target="_blank" rel="noopener" aria-label="App Store'dan hemen indir" className="inline-flex items-center">
       <Image
         src="/store/appstore.png"
         alt="App Store'dan hemen indir"
@@ -44,7 +44,7 @@ function AppStoreBadge() {
 
 function GooglePlayBadge() {
   return (
-    <a href="#" aria-label="Google Play'den hemen indir" className="inline-flex items-center">
+    <a href="https://play.google.com/store/apps/details?id=com.sorsanapp.sorsana&hl=tr" target="_blank" rel="noopener" aria-label="Google Play'den hemen indir" className="inline-flex items-center">
       <Image
         src="/store/googleplay.png"
         alt="Google Play'den hemen indir"
